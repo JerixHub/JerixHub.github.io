@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeric John Carillo — AI Systems Engineer & Full Stack Developer</title>
+  <meta name="description" content="AI Systems Engineer & Full Stack Developer with 8+ years building AI-powered platforms, SaaS products, scalable backends, and workflow automation." />
+  <meta name="theme-color" content="#0a0a0f" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jeric John Carillo — AI Systems Engineer & Full Stack Developer" />
+  <meta property="og:description" content="Building AI-powered platforms, automations & scalable applications." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            ink: '#0a0a0f',
+            paper: '#e6e6ff',
+          },
+          keyframes: {
+            'glow-pulse': {
+              '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+              '50%': { opacity: '0.75', transform: 'scale(1.08)' },
+            },
+            'gradient-shift': {
+              '0%, 100%': { 'background-position': '0% 50%' },
+              '50%': { 'background-position': '100% 50%' },
+            },
+            'pulse-dot': {
+              '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+              '50%': { opacity: '0.6', transform: 'scale(1.4)' },
+            },
+            'blink': {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' },
+            },
+          },
+          animation: {
+            'glow-pulse': 'glow-pulse 8s ease-in-out infinite',
+            'gradient-shift': 'gradient-shift 6s ease infinite',
+            'pulse-dot': 'pulse-dot 2s ease-in-out infinite',
+            'blink': 'blink 1s step-end infinite',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    html, body {
+      background: #0a0a0f;
+      color: #e6e6ff;
+    }
+    body {
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Subtle noise texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, #818cf8 0%, #c084fc 50%, #f0abfc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradient-shift 6s ease infinite;
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .glow-orb-indigo {
+      background: radial-gradient(circle, rgba(99,102,241,0.55) 0%, transparent 70%);
+    }
+    .glow-orb-purple {
+      background: radial-gradient(circle, rgba(168,85,247,0.45) 0%, transparent 70%);
+    }
+    .glow-orb-pink {
+      background: radial-gradient(circle, rgba(236,72,153,0.35) 0%, transparent 70%);
+    }
+
+    .card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      transition: transform 250ms ease-out, border-color 250ms ease-out, box-shadow 250ms ease-out, background 250ms ease-out;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(165,180,252,0.4);
+      box-shadow: 0 12px 40px -8px rgba(99,102,241,0.35), 0 0 0 1px rgba(165,180,252,0.15);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.025);
+      font-size: 13px;
+      color: #cbd5e1;
+      transition: all 200ms ease;
+    }
+    .pill-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .pill:hover {
+      border-color: rgba(165,180,252,0.5);
+      color: #e6e6ff;
+      background: rgba(99,102,241,0.08);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 15px;
+      background: linear-gradient(120deg, #6366f1 0%, #a855f7 100%);
+      color: white;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      box-shadow: 0 8px 24px -8px rgba(99,102,241,0.6);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px -8px rgba(99,102,241,0.8);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 15px;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e6e6ff;
+      transition: all 200ms ease;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(165,180,252,0.5);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll reveal */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease-out, transform 700ms ease-out;
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Focus styles */
+    :focus-visible {
+      outline: 2px solid #a5b4fc;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Nav link active state */
+    .nav-link {
+      position: relative;
+      color: #94a3b8;
+      transition: color 200ms ease;
+    }
+    .nav-link:hover { color: #e6e6ff; }
+    .nav-link.is-active {
+      color: #e6e6ff;
+    }
+    .nav-link.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: linear-gradient(120deg, #818cf8, #c084fc);
+    }
+
+    /* Timeline */
+    .timeline-rail {
+      background: linear-gradient(180deg, rgba(99,102,241,0.6) 0%, rgba(168,85,247,0.4) 50%, transparent 100%);
+    }
+    .timeline-dot {
+      background: #0a0a0f;
+      border: 2px solid #a5b4fc;
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.15), 0 0 20px rgba(99,102,241,0.5);
+    }
+
+    /* Cursor blink */
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.9em;
+      background: linear-gradient(180deg, #818cf8, #c084fc);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateY(-100%);
+      transition: transform 300ms ease-out;
+    }
+    .mobile-menu.is-open {
+      transform: translateY(0);
+    }
+
+    /* Selection */
+    ::selection {
+      background: rgba(168,85,247,0.4);
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="relative font-sans">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-indigo-500 focus:text-white focus:rounded-lg">Skip to main content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-black/40 border-b border-white/5">
+    <nav class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Primary">
+      <a href="#hero" class="flex items-center gap-2.5 font-semibold tracking-tight">
+        <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold" style="background: linear-gradient(120deg, #6366f1 0%, #a855f7 100%);">JC</span>
+        <span class="hidden sm:inline text-paper">Jeric Carillo</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#expertise" class="nav-link">Stack</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <a href="https://github.com/jerixhub" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 text-sm pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+
+      <button id="menuBtn" class="md:hidden p-2 -mr-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+
+    <div id="mobileMenu" class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-ink/95 backdrop-blur-xl border-b border-white/10" hidden>
+      <ul class="px-6 py-4 space-y-2">
+        <li><a href="#about" class="block py-2 nav-link">About</a></li>
+        <li><a href="#expertise" class="block py-2 nav-link">Stack</a></li>
+        <li><a href="#experience" class="block py-2 nav-link">Experience</a></li>
+        <li><a href="#projects" class="block py-2 nav-link">Projects</a></li>
+        <li><a href="#contact" class="block py-2 nav-link">Contact</a></li>
+        <li><a href="https://github.com/jerixhub" target="_blank" rel="noopener" class="block py-2 nav-link">GitHub →</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main" class="relative z-10">
+
+    <!-- ============ HERO ============ -->
+    <section id="hero" class="relative min-h-dvh flex items-center pt-24 pb-16 px-6 lg:px-8 overflow-hidden">
+      <!-- Glow orbs -->
+      <div class="glow-orb glow-orb-indigo w-[500px] h-[500px] -top-32 -right-32 animate-glow-pulse" aria-hidden="true"></div>
+      <div class="glow-orb glow-orb-purple w-[400px] h-[400px] top-1/3 -left-32 animate-glow-pulse" style="animation-delay:-3s" aria-hidden="true"></div>
+      <div class="glow-orb glow-orb-pink w-[300px] h-[300px] bottom-0 right-1/4 animate-glow-pulse" style="animation-delay:-5s" aria-hidden="true"></div>
+
+      <!-- Grid pattern overlay -->
+      <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 64px 64px;" aria-hidden="true"></div>
+
+      <div class="relative max-w-6xl mx-auto w-full">
+        <div data-reveal class="inline-flex items-center gap-2 pill mb-6">
+          <span class="relative flex w-2 h-2">
+            <span class="absolute inset-0 rounded-full bg-emerald-400 animate-pulse-dot"></span>
+            <span class="relative rounded-full w-2 h-2 bg-emerald-400"></span>
+          </span>
+          <span class="font-mono text-xs">Available for new projects · Cagayan de Oro, Philippines</span>
+        </div>
+
+        <h1 data-reveal style="transition-delay:80ms" class="text-[clamp(2.5rem,7vw,4.75rem)] font-bold leading-[1.05] tracking-tight mb-6">
+          Building <span class="gradient-text">AI-Powered</span> Platforms,<br class="hidden sm:block" />
+          Automations &amp; <span class="gradient-text">Scalable</span> Applications
+        </h1>
+
+        <p data-reveal style="transition-delay:160ms" class="text-xl md:text-2xl text-slate-300 font-light mb-2 max-w-3xl">
+          Full Stack Developer specializing in
+          <span id="typed" class="gradient-text font-medium"></span><span class="cursor" aria-hidden="true"></span>
+        </p>
+
+        <p data-reveal style="transition-delay:240ms" class="text-base md:text-lg text-slate-400 mb-10 max-w-2xl leading-relaxed">
+          I help businesses and startups build modern applications powered by AI, automation, and scalable backend architecture using Laravel, Next.js, React, Vue, Spring Boot, Flutter, Claude Code, OpenAI APIs, Ruby on Rails, Go, and modern cloud tools.
+        </p>
+
+        <div data-reveal style="transition-delay:320ms" class="flex flex-wrap gap-2.5 mb-10">
+          <span class="pill pill-mono">📍 Cagayan de Oro</span>
+          <span class="pill pill-mono">💼 8+ Years Experience</span>
+          <span class="pill pill-mono">🤖 AI Integrations Specialist</span>
+          <span class="pill pill-mono">⚡ SaaS & Backend Engineer</span>
+        </div>
+
+        <div data-reveal style="transition-delay:400ms" class="flex flex-wrap gap-3">
+          <a href="https://github.com/jerixhub" target="_blank" rel="noopener" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            View GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="mailto:carillojericjohn@gmail.com" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Email Me
+          </a>
+        </div>
+
+        <!-- Scroll cue -->
+        <div data-reveal style="transition-delay:600ms" class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-slate-500 text-xs">
+          <span class="font-mono uppercase tracking-widest">Scroll</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="animate-bounce"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="relative py-24 lg:py-32 px-6 lg:px-8" aria-labelledby="about-title">
+      <div class="max-w-6xl mx-auto">
+        <div data-reveal class="mb-12">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-indigo-300 mb-3">01 — About</p>
+          <h2 id="about-title" class="text-3xl md:text-5xl font-bold tracking-tight">
+            Engineer behind the <span class="gradient-text">systems</span>.
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-10 lg:gap-16 items-start">
+          <div data-reveal class="md:col-span-3 space-y-6 text-slate-300 leading-relaxed text-lg">
+            <p>
+              I'm a full stack developer passionate about building intelligent systems, scalable web applications, automation workflows, and modern SaaS platforms.
+            </p>
+            <p class="text-slate-400 text-base">
+              I also utilize AI-assisted development workflows using Claude Code, OpenAI integrations, automation pipelines, and modern tooling to accelerate development and improve product delivery.
+            </p>
+          </div>
+
+          <div data-reveal style="transition-delay:120ms" class="md:col-span-2">
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-500 mb-4">I specialize in</p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2.5">
+              <li class="flex items-center gap-3 text-slate-200 text-sm">
+                <span class="text-indigo-400">▸</span> AI-powered applications
+              </li>
+              <li class="flex items-center gap-3 text-slate-200 text-sm">
+                <span class="text-indigo-400">▸</span> SaaS development
+              </li>
+              <li class="flex items-center gap-3 text-slate-200 text-sm">
+                <span class="text-indigo-400">▸</span> Backend architecture
+              </li>
+              <li class="flex items-center gap-3 text-slate-200 text-sm">
+                <span class="text-indigo-400">▸</span> API integrations
+              </li>
+              <li class="flex items-center gap-3 text-slate-200 text-sm">
+                <span class="text-indigo-400">▸</span> Workflow automation
+              </li>
+              <li class="flex items-center gap-3 text-slate-200 text-sm">
+                <span class="text-indigo-400">▸</span> Mobile development
+              </li>
+              <li class="flex items-center gap-3 text-slate-200 text-sm">
+                <span class="text-indigo-400">▸</span> Frontend engineering
+              </li>
+              <li class="flex items-center gap-3 text-slate-200 text-sm">
+                <span class="text-indigo-400">▸</span> Business systems
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERTISE ============ -->
+    <section id="expertise" class="relative py-24 lg:py-32 px-6 lg:px-8" aria-labelledby="expertise-title">
+      <div class="max-w-6xl mx-auto">
+        <div data-reveal class="mb-12 max-w-2xl">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-indigo-300 mb-3">02 — Core Expertise</p>
+          <h2 id="expertise-title" class="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            Tools of the <span class="gradient-text">trade</span>.
+          </h2>
+          <p class="text-slate-400">Years of hands-on work across AI, web, mobile, and backend ecosystems.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!-- AI & Automation -->
+          <article data-reveal class="card rounded-2xl p-6 lg:col-span-2">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: linear-gradient(120deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(165,180,252,0.3);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 014 4v3a3 3 0 003 3v0a3 3 0 01-3 3h-1v3a4 4 0 01-4 4 4 4 0 01-4-4v-3H6a3 3 0 01-3-3v0a3 3 0 003-3V6a4 4 0 014-4z"/></svg>
+              </span>
+              <div>
+                <h3 class="font-semibold text-lg">AI &amp; Automation</h3>
+                <p class="text-xs text-slate-500 font-mono">primary focus</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="pill pill-mono">OpenAI API</span>
+              <span class="pill pill-mono">Claude Code</span>
+              <span class="pill pill-mono">AI Workflow Automation</span>
+              <span class="pill pill-mono">Prompt Engineering</span>
+              <span class="pill pill-mono">AI Content Pipelines</span>
+              <span class="pill pill-mono">n8n</span>
+              <span class="pill pill-mono">Process Automation</span>
+              <span class="pill pill-mono">API Integrations</span>
+            </div>
+          </article>
+
+          <!-- Frontend -->
+          <article data-reveal style="transition-delay:80ms" class="card rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: linear-gradient(120deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(165,180,252,0.3);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 17v4"/></svg>
+              </span>
+              <div>
+                <h3 class="font-semibold text-lg">Frontend</h3>
+                <p class="text-xs text-slate-500 font-mono">interfaces</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="pill pill-mono">React</span>
+              <span class="pill pill-mono">Next.js</span>
+              <span class="pill pill-mono">Vue</span>
+              <span class="pill pill-mono">Nuxt</span>
+              <span class="pill pill-mono">JavaScript</span>
+              <span class="pill pill-mono">TailwindCSS</span>
+              <span class="pill pill-mono">HTML5</span>
+              <span class="pill pill-mono">CSS3</span>
+            </div>
+          </article>
+
+          <!-- Backend -->
+          <article data-reveal style="transition-delay:160ms" class="card rounded-2xl p-6 lg:col-span-2">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: linear-gradient(120deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(165,180,252,0.3);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6a9 3 0 0018 0V5M3 11v6a9 3 0 0018 0v-6"/></svg>
+              </span>
+              <div>
+                <h3 class="font-semibold text-lg">Backend</h3>
+                <p class="text-xs text-slate-500 font-mono">systems &amp; APIs</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="pill pill-mono">Laravel</span>
+              <span class="pill pill-mono">PHP</span>
+              <span class="pill pill-mono">Spring Boot</span>
+              <span class="pill pill-mono">Java</span>
+              <span class="pill pill-mono">Django</span>
+              <span class="pill pill-mono">Python</span>
+              <span class="pill pill-mono">Ruby on Rails</span>
+              <span class="pill pill-mono">Node.js</span>
+              <span class="pill pill-mono">Go</span>
+              <span class="pill pill-mono">REST APIs</span>
+            </div>
+          </article>
+
+          <!-- Mobile -->
+          <article data-reveal style="transition-delay:240ms" class="card rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: linear-gradient(120deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(165,180,252,0.3);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              </span>
+              <div>
+                <h3 class="font-semibold text-lg">Mobile</h3>
+                <p class="text-xs text-slate-500 font-mono">cross-platform</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="pill pill-mono">Flutter</span>
+              <span class="pill pill-mono">Firebase</span>
+              <span class="pill pill-mono">React Native</span>
+            </div>
+          </article>
+
+          <!-- Database & DevOps -->
+          <article data-reveal style="transition-delay:320ms" class="card rounded-2xl p-6 lg:col-span-3">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: linear-gradient(120deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(165,180,252,0.3);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+              </span>
+              <div>
+                <h3 class="font-semibold text-lg">Database &amp; DevOps</h3>
+                <p class="text-xs text-slate-500 font-mono">infrastructure</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="pill pill-mono">MySQL</span>
+              <span class="pill pill-mono">PostgreSQL</span>
+              <span class="pill pill-mono">Git</span>
+              <span class="pill pill-mono">Docker</span>
+              <span class="pill pill-mono">Linux</span>
+              <span class="pill pill-mono">Supabase</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="relative py-24 lg:py-32 px-6 lg:px-8" aria-labelledby="experience-title">
+      <div class="max-w-5xl mx-auto">
+        <div data-reveal class="mb-16 max-w-2xl">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-indigo-300 mb-3">03 — Experience</p>
+          <h2 id="experience-title" class="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            A decade of <span class="gradient-text">building</span>.
+          </h2>
+          <p class="text-slate-400">8+ years across agencies, startups, and product teams.</p>
+        </div>
+
+        <ol class="relative pl-8 md:pl-12 space-y-12 border-l-0">
+          <!-- Rail -->
+          <div class="absolute left-3 md:left-5 top-2 bottom-2 w-px timeline-rail" aria-hidden="true"></div>
+
+          <!-- Digitize -->
+          <li data-reveal class="relative">
+            <span class="absolute -left-[26px] md:-left-[34px] top-1.5 w-4 h-4 rounded-full timeline-dot" aria-hidden="true"></span>
+            <div class="card rounded-2xl p-6">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                <h3 class="text-xl font-semibold">Digitize</h3>
+                <span class="font-mono text-xs text-indigo-300">Oct 2022 — Present</span>
+              </div>
+              <p class="text-sm text-slate-400 mb-3">WordPress / Software Developer</p>
+              <ul class="text-slate-300 text-sm space-y-1.5 list-disc list-outside ml-4">
+                <li>Maintains and manages 30+ WordPress websites</li>
+                <li>Builds project-based applications using Next.js, Ruby on Rails, Python, Go, React, and Vue</li>
+                <li>Develops scalable web applications and internal business systems</li>
+                <li>Builds custom frontend and backend solutions for clients</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Spondise -->
+          <li data-reveal class="relative">
+            <span class="absolute -left-[26px] md:-left-[34px] top-1.5 w-4 h-4 rounded-full timeline-dot" aria-hidden="true"></span>
+            <div class="card rounded-2xl p-6">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                <h3 class="text-xl font-semibold">Spondise</h3>
+                <span class="font-mono text-xs text-indigo-300">Apr 2023 — Mar 2024</span>
+              </div>
+              <p class="text-sm text-slate-400 mb-3">Frontend Web Developer (Vue.js)</p>
+              <ul class="text-slate-300 text-sm space-y-1.5 list-disc list-outside ml-4">
+                <li>Developed frontend systems using Nuxt.js</li>
+                <li>Integrated APIs and backend services</li>
+                <li>Built reusable UI components from scratch</li>
+                <li>Improved frontend performance and maintainability</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Pic-a-talk -->
+          <li data-reveal class="relative">
+            <span class="absolute -left-[26px] md:-left-[34px] top-1.5 w-4 h-4 rounded-full timeline-dot" aria-hidden="true"></span>
+            <div class="card rounded-2xl p-6">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                <h3 class="text-xl font-semibold">Pic-a-talk</h3>
+                <span class="font-mono text-xs text-indigo-300">Jun 2022 — Aug 2022</span>
+              </div>
+              <p class="text-sm text-slate-400 mb-3">Intern Mobile Developer (React Native / Flutter)</p>
+              <ul class="text-slate-300 text-sm space-y-1.5 list-disc list-outside ml-4">
+                <li>Migrated mobile application from React Native to Flutter</li>
+                <li>Assisted with feature implementation and UI development</li>
+                <li>Worked closely with startup development teams</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Avazoo -->
+          <li data-reveal class="relative">
+            <span class="absolute -left-[26px] md:-left-[34px] top-1.5 w-4 h-4 rounded-full timeline-dot" aria-hidden="true"></span>
+            <div class="card rounded-2xl p-6">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                <h3 class="text-xl font-semibold">Avazoo</h3>
+                <span class="font-mono text-xs text-indigo-300">Oct 2021 — Jul 2022</span>
+              </div>
+              <p class="text-sm text-slate-400 mb-3">Web Developer (Vue.js / React.js)</p>
+              <ul class="text-slate-300 text-sm space-y-1.5 list-disc list-outside ml-4">
+                <li>Built and maintained backend systems using Laravel</li>
+                <li>Developed APIs for mobile applications</li>
+                <li>Improved backend scalability and system maintenance</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- AppTech -->
+          <li data-reveal class="relative">
+            <span class="absolute -left-[26px] md:-left-[34px] top-1.5 w-4 h-4 rounded-full timeline-dot" aria-hidden="true"></span>
+            <div class="card rounded-2xl p-6">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                <h3 class="text-xl font-semibold">AppTech</h3>
+                <span class="font-mono text-xs text-indigo-300">Mar 2019 — Jun 2021</span>
+              </div>
+              <p class="text-sm text-slate-400 mb-3">Full Stack Developer (React.js)</p>
+              <ul class="text-slate-300 text-sm space-y-1.5 list-disc list-outside ml-4">
+                <li>Developed backend systems using Spring Boot</li>
+                <li>Built and maintained APIs for a mobile emergency application</li>
+                <li>Worked on frontend and backend integrations</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Techcoin -->
+          <li data-reveal class="relative">
+            <span class="absolute -left-[26px] md:-left-[34px] top-1.5 w-4 h-4 rounded-full timeline-dot" aria-hidden="true"></span>
+            <div class="card rounded-2xl p-6">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                <h3 class="text-xl font-semibold">Techcoin Deals / Flowers For Everyone</h3>
+                <span class="font-mono text-xs text-indigo-300">Feb 2019 — May 2019</span>
+              </div>
+              <p class="text-sm text-slate-400 mb-3">WordPress / Web Developer</p>
+              <ul class="text-slate-300 text-sm space-y-1.5 list-disc list-outside ml-4">
+                <li>Developed and maintained Laravel and WordPress websites</li>
+                <li>Built ecommerce systems using token/coin-based transactions</li>
+                <li>Managed WooCommerce integrations, payments, and delivery</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- NexusBond -->
+          <li data-reveal class="relative">
+            <span class="absolute -left-[26px] md:-left-[34px] top-1.5 w-4 h-4 rounded-full timeline-dot" aria-hidden="true"></span>
+            <div class="card rounded-2xl p-6">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                <h3 class="text-xl font-semibold">NexusBond Asia</h3>
+                <span class="font-mono text-xs text-indigo-300">May 2017 — Jan 2019</span>
+              </div>
+              <p class="text-sm text-slate-400 mb-3">Mobile / Web Developer</p>
+              <ul class="text-slate-300 text-sm space-y-1.5 list-disc list-outside ml-4">
+                <li>Started as a mobile development intern</li>
+                <li>Transitioned into Python web development</li>
+                <li>Became a full-time Web Developer working on frontend and backend systems</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="relative py-24 lg:py-32 px-6 lg:px-8" aria-labelledby="projects-title">
+      <div class="max-w-6xl mx-auto">
+        <div data-reveal class="mb-12 max-w-2xl">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-indigo-300 mb-3">04 — Featured Projects</p>
+          <h2 id="projects-title" class="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            Selected <span class="gradient-text">work</span>.
+          </h2>
+          <p class="text-slate-400">Platforms, ecommerce systems, and applications shipped for clients across the globe.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <a data-reveal href="https://ocadido.com" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 01</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Ocadido</h3>
+            <p class="text-sm text-slate-400 mb-4">Online platform development and maintenance.</p>
+            <p class="font-mono text-xs text-slate-500">ocadido.com</p>
+          </a>
+
+          <a data-reveal style="transition-delay:60ms" href="https://spacio.es" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 02</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Spacio</h3>
+            <p class="text-sm text-slate-400 mb-4">Web platform support and backend development.</p>
+            <p class="font-mono text-xs text-slate-500">spacio.es</p>
+          </a>
+
+          <a data-reveal style="transition-delay:120ms" href="https://apptechgatewayportal.com" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 03</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">AppTech Gateway Portal</h3>
+            <p class="text-sm text-slate-400 mb-4">Enterprise portal and backend services.</p>
+            <p class="font-mono text-xs text-slate-500">apptechgatewayportal.com</p>
+          </a>
+
+          <a data-reveal href="https://flowersforeveryone.co.za" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 04</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Flowers For Everyone</h3>
+            <p class="text-sm text-slate-400 mb-4">Laravel ecommerce backend development.</p>
+            <p class="font-mono text-xs text-slate-500">flowersforeveryone.co.za</p>
+          </a>
+
+          <a data-reveal style="transition-delay:60ms" href="https://apptechgateway.com" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 05</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">AppTech Gateway</h3>
+            <p class="text-sm text-slate-400 mb-4">Business and platform development.</p>
+            <p class="font-mono text-xs text-slate-500">apptechgateway.com</p>
+          </a>
+
+          <a data-reveal style="transition-delay:120ms" href="https://avazoo.com" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 06</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Avazoo</h3>
+            <p class="text-sm text-slate-400 mb-4">Backend API systems for mobile applications.</p>
+            <p class="font-mono text-xs text-slate-500">avazoo.com</p>
+          </a>
+
+          <a data-reveal href="https://pic-a-talk.com" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 07</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Pic-a-talk</h3>
+            <p class="text-sm text-slate-400 mb-4">Startup mobile application development.</p>
+            <p class="font-mono text-xs text-slate-500">pic-a-talk.com</p>
+          </a>
+
+          <a data-reveal style="transition-delay:60ms" href="https://digitize.au" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 08</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Digitize</h3>
+            <p class="text-sm text-slate-400 mb-4">Software and website development agency projects.</p>
+            <p class="font-mono text-xs text-slate-500">digitize.au</p>
+          </a>
+
+          <a data-reveal style="transition-delay:120ms" href="https://speedrooracing.com" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 09</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Speedroo Racing</h3>
+            <p class="text-sm text-slate-400 mb-4">Web development and maintenance.</p>
+            <p class="font-mono text-xs text-slate-500">speedrooracing.com</p>
+          </a>
+
+          <a data-reveal href="https://daytradescans.com" target="_blank" rel="noopener" class="card rounded-2xl p-6 group block sm:col-span-2 lg:col-span-3">
+            <div class="flex items-start justify-between mb-4">
+              <span class="font-mono text-xs text-indigo-300">/ 10</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500 group-hover:text-indigo-300 transition-colors" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Day Trade Scans</h3>
+            <p class="text-sm text-slate-400 mb-4">Frontend and backend platform development for traders.</p>
+            <p class="font-mono text-xs text-slate-500">daytradescans.com</p>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="relative py-24 lg:py-32 px-6 lg:px-8 overflow-hidden" aria-labelledby="contact-title">
+      <!-- Glow -->
+      <div class="glow-orb glow-orb-indigo w-[600px] h-[400px] left-1/2 -translate-x-1/2 -top-20 animate-glow-pulse" aria-hidden="true"></div>
+
+      <div class="relative max-w-4xl mx-auto text-center">
+        <div data-reveal>
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-indigo-300 mb-4">05 — Get in touch</p>
+          <h2 id="contact-title" class="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
+            Let's build <span class="gradient-text">modern software</span><br />that scales.
+          </h2>
+          <p class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
+            Interested in building AI-powered systems, scalable SaaS products, modern web applications, or automation workflows? Let's talk.
+          </p>
+        </div>
+
+        <div data-reveal style="transition-delay:120ms" class="flex flex-wrap justify-center gap-3 mb-10">
+          <a href="mailto:carillojericjohn@gmail.com" class="pill hover:!border-indigo-400/50">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            carillojericjohn@gmail.com
+          </a>
+          <a href="tel:+639652967663" class="pill hover:!border-indigo-400/50">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +63 965 296 7663
+          </a>
+          <span class="pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cagayan de Oro, Philippines
+          </span>
+        </div>
+
+        <div data-reveal style="transition-delay:200ms" class="flex flex-wrap justify-center gap-3">
+          <a href="mailto:carillojericjohn@gmail.com" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Start a conversation
+          </a>
+          <a href="https://github.com/jerixhub" target="_blank" rel="noopener" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            View GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="relative z-10 border-t border-white/5 py-8 px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p class="text-slate-500">© 2026 Jeric John Carillo · Built with care.</p>
+      <p class="font-mono text-xs text-slate-600">Cagayan de Oro, Philippines</p>
+    </div>
+  </footer>
+
+  <!-- ============ JS ============ -->
+  <script>
+    (function () {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ----- Scroll reveal -----
+      const revealEls = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window && !prefersReduced) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach((el) => io.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      // ----- Typed subtitle -----
+      const typedEl = document.getElementById('typed');
+      if (typedEl && !prefersReduced) {
+        const words = ['AI Integration', 'SaaS Development', 'Backend Systems', 'Workflow Automation'];
+        let wi = 0, ci = 0, deleting = false;
+        function tick() {
+          const word = words[wi];
+          if (!deleting) {
+            typedEl.textContent = word.slice(0, ++ci);
+            if (ci === word.length) { deleting = true; setTimeout(tick, 1600); return; }
+            setTimeout(tick, 60);
+          } else {
+            typedEl.textContent = word.slice(0, --ci);
+            if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(tick, 200); return; }
+            setTimeout(tick, 30);
+          }
+        }
+        tick();
+      } else if (typedEl) {
+        typedEl.textContent = 'AI Integration, SaaS, Backend & Automation';
+      }
+
+      // ----- Mobile menu -----
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        const setOpen = (open) => {
+          if (open) {
+            mobileMenu.hidden = false;
+            requestAnimationFrame(() => mobileMenu.classList.add('is-open'));
+            menuBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            mobileMenu.classList.remove('is-open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            setTimeout(() => { mobileMenu.hidden = true; }, 300);
+          }
+        };
+        menuBtn.addEventListener('click', () => {
+          const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+          setOpen(!isOpen);
+        });
+        mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') setOpen(false);
+        });
+      }
+
+      // ----- Active nav highlight -----
+      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+      const sectionIds = Array.from(navLinks).map((a) => a.getAttribute('href').slice(1));
+      const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+      if ('IntersectionObserver' in window && sections.length) {
+        const setActive = (id) => {
+          navLinks.forEach((a) => {
+            const match = a.getAttribute('href') === '#' + id;
+            a.classList.toggle('is-active', match);
+            if (match) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+          });
+        };
+        const navIo = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+        sections.forEach((s) => navIo.observe(s));
+      }
+    })();
+  </script>
+</body>
+</html>
