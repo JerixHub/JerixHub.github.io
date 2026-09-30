@@ -172,7 +172,7 @@ I also utilize AI-assisted development workflows using Claude Code, OpenAI integ
 ### PlyrPass (Ongoing)
 https://plyrpass.app
 
-Current product build.
+Mobile app. PlyrPass brings skill ratings, DUPR, progress tracking, and live matchmaking into one place built around how you actually play.
 
 ---
 
