@@ -90,7 +90,7 @@ I also utilize AI-assisted development workflows using Claude Code, OpenAI integ
 
 ### Digitize
 **WordPress / Software Developer**  
-*October 2022 – Present*
+*October 2022 – June 2026*
 
 - Maintains and manages 30+ WordPress websites
 - Works on project-based applications using:
@@ -168,6 +168,20 @@ I also utilize AI-assisted development workflows using Claude Code, OpenAI integ
 ---
 
 ## Featured Projects & Platforms
+
+### PlyrPass (Ongoing)
+https://plyrpass.app
+
+Mobile app. PlyrPass brings skill ratings, DUPR, progress tracking, and live matchmaking into one place built around how you actually play.
+
+---
+
+### Oceanova Yachts (formerly Crucero)
+https://oceanovayachts.com/
+
+Digital marketplace connecting yacht renters with verified agents for direct booking of premium yachts worldwide.
+
+---
 
 ### Ocadido
 https://ocadido.com
