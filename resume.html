@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Jeric John Carillo — Resume</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #1a1a22;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    max-width: 190mm;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 2px solid #4f46e5;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+  .name {
+    font-size: 22pt;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #0a0a0f;
+    margin: 0;
+  }
+  .title {
+    font-size: 11.5pt;
+    font-weight: 500;
+    color: #4f46e5;
+    margin: 2px 0 8px 0;
+  }
+  .contact {
+    font-size: 9.5pt;
+    color: #475569;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
+  .contact a { color: #475569; text-decoration: none; }
+  .contact span.sep { color: #cbd5e1; }
+
+  /* Sections */
+  section { margin-bottom: 14px; }
+  h2 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #4f46e5;
+    margin: 0 0 8px 0;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  p.summary { margin: 0; color: #334155; }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    row-gap: 5px;
+    column-gap: 10px;
+  }
+  .skill-label {
+    font-weight: 600;
+    color: #0a0a0f;
+    font-size: 10pt;
+  }
+  .skill-list { color: #334155; font-size: 10pt; }
+
+  /* Experience */
+  .job { margin-bottom: 10px; page-break-inside: avoid; }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .job-company {
+    font-weight: 700;
+    color: #0a0a0f;
+    font-size: 11pt;
+  }
+  .job-date {
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    font-size: 9pt;
+    color: #64748b;
+    white-space: nowrap;
+  }
+  .job-role {
+    font-style: italic;
+    color: #4f46e5;
+    font-size: 10pt;
+    margin: 1px 0 4px 0;
+  }
+  .job ul {
+    margin: 3px 0 0 0;
+    padding-left: 16px;
+    color: #334155;
+  }
+  .job li { margin-bottom: 2px; }
+
+  /* Projects */
+  .project { margin-bottom: 8px; page-break-inside: avoid; }
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .project-name { font-weight: 700; color: #0a0a0f; font-size: 10.5pt; }
+  .project-url {
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    font-size: 8.5pt;
+    color: #4f46e5;
+  }
+  .project-desc { color: #334155; margin: 2px 0 0 0; }
+  .project-stack {
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    font-size: 8.5pt;
+    color: #64748b;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1 class="name">Jeric John Carillo</h1>
+    <div class="title">AI Systems Engineer &amp; Full Stack Developer</div>
+    <div class="contact">
+      <a href="mailto:carillojericjohn@gmail.com">carillojericjohn@gmail.com</a>
+      <span class="sep">•</span>
+      <a href="tel:+639652967663">+63 965 296 7663</a>
+      <span class="sep">•</span>
+      <span>Cagayan de Oro, Philippines</span>
+      <span class="sep">•</span>
+      <a href="https://github.com/jerixhub">github.com/jerixhub</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p class="summary">
+      Full Stack Developer with 8+ years of experience building AI-powered platforms, SaaS products, scalable backends, and workflow automations. Specialized in integrating LLM tooling (OpenAI, Claude) with modern web stacks (Laravel, Next.js, React, Vue, Spring Boot, Flutter) to deliver production systems for agencies, startups, and product teams.
+    </p>
+  </section>
+
+  <section>
+    <h2>Core Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-label">AI &amp; Automation</div>
+      <div class="skill-list">OpenAI API, Claude Code, Prompt Engineering, AI Content Pipelines, n8n, Process Automation, API Integrations</div>
+
+      <div class="skill-label">Frontend</div>
+      <div class="skill-list">React, Next.js, Vue, Nuxt, JavaScript, TailwindCSS, HTML5, CSS3</div>
+
+      <div class="skill-label">Backend</div>
+      <div class="skill-list">Laravel, PHP, Spring Boot, Java, Django, Python, Ruby on Rails, Node.js, Go, REST APIs</div>
+
+      <div class="skill-label">Mobile</div>
+      <div class="skill-list">Flutter, React Native, Firebase</div>
+
+      <div class="skill-label">Database &amp; DevOps</div>
+      <div class="skill-list">MySQL, PostgreSQL, Supabase, Git, Docker, Linux</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Professional Experience</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Digitize</span>
+        <span class="job-date">Oct 2022 — Present</span>
+      </div>
+      <div class="job-role">WordPress / Software Developer</div>
+      <ul>
+        <li>Maintain and manage 30+ WordPress websites for ongoing client portfolios.</li>
+        <li>Build project-based applications using Next.js, Ruby on Rails, Python, Go, React, and Vue.</li>
+        <li>Develop scalable web applications and internal business systems.</li>
+        <li>Deliver custom frontend and backend solutions tailored to client requirements.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Spondise</span>
+        <span class="job-date">Apr 2023 — Mar 2024</span>
+      </div>
+      <div class="job-role">Frontend Web Developer (Vue.js)</div>
+      <ul>
+        <li>Developed frontend systems using Nuxt.js.</li>
+        <li>Integrated REST APIs and backend services.</li>
+        <li>Built reusable UI components from scratch.</li>
+        <li>Improved frontend performance and long-term maintainability.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Pic-a-talk</span>
+        <span class="job-date">Jun 2022 — Aug 2022</span>
+      </div>
+      <div class="job-role">Mobile Developer Intern (React Native / Flutter)</div>
+      <ul>
+        <li>Migrated mobile application from React Native to Flutter.</li>
+        <li>Assisted with feature implementation and UI development.</li>
+        <li>Collaborated closely with startup development teams.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Avazoo</span>
+        <span class="job-date">Oct 2021 — Jul 2022</span>
+      </div>
+      <div class="job-role">Web Developer (Vue.js / React.js)</div>
+      <ul>
+        <li>Built and maintained backend systems using Laravel.</li>
+        <li>Developed APIs consumed by mobile applications.</li>
+        <li>Improved backend scalability and ongoing system maintenance.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">AppTech</span>
+        <span class="job-date">Mar 2019 — Jun 2021</span>
+      </div>
+      <div class="job-role">Full Stack Developer (React.js)</div>
+      <ul>
+        <li>Developed backend systems using Spring Boot.</li>
+        <li>Built and maintained APIs for a mobile emergency response application.</li>
+        <li>Worked on end-to-end frontend and backend integrations.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Techcoin Deals / Flowers For Everyone</span>
+        <span class="job-date">Feb 2019 — May 2019</span>
+      </div>
+      <div class="job-role">WordPress / Web Developer</div>
+      <ul>
+        <li>Developed and maintained Laravel and WordPress websites.</li>
+        <li>Built ecommerce systems using token/coin-based transactions.</li>
+        <li>Managed WooCommerce integrations, payments, and delivery flows.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">NexusBond Asia</span>
+        <span class="job-date">May 2017 — Jan 2019</span>
+      </div>
+      <div class="job-role">Mobile / Web Developer</div>
+      <ul>
+        <li>Started as a mobile development intern.</li>
+        <li>Transitioned into Python web development.</li>
+        <li>Promoted to full-time Web Developer working on frontend and backend systems.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Featured Projects</h2>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-name">Crucero <em style="font-weight:400;color:#16a34a;font-size:9pt;font-style:normal;">(Ongoing)</em></span>
+        <span class="project-url">crucero-alpha.vercel.app</span>
+      </div>
+      <p class="project-desc">Digital marketplace connecting yacht renters with verified agents for direct booking of premium yachts worldwide. Transparent pricing, no intermediaries.</p>
+      <p class="project-stack">Stack: Next.js, Vercel, Marketplace, SaaS</p>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-name">Pic-a-talk</span>
+        <span class="project-url">pic-a-talk.com</span>
+      </div>
+      <p class="project-desc">Startup mobile application development — assisted migration and feature delivery during early-stage product build.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-name">Digitize</span>
+        <span class="project-url">digitize.au</span>
+      </div>
+      <p class="project-desc">Software and website development agency projects across WordPress and custom application stacks.</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
